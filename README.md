@@ -4,18 +4,18 @@
 
 Astrbot 插件 - 外部知识库检索
 
-中文 | English
+[中文](README.md) | [English](README_en.md)
 
 > [!NOTE]
 > 本插件正在开发中......
 
 ## 安装
 
-从项目链接手动安装。
+AstrBot Web UI - 插件 - 右下角"+"号 - 从链接安装
 
 ## 使用
 
-按 Web UI 设置的引导使用。
+按 AstrBot Web UI 中本插件设置的引导使用
 
 ### 如果本地部署了外部知识库（包括 Docker 部署）
 
