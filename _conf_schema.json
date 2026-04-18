@@ -18,16 +18,16 @@
     "description": "API 基地址",
     "type": "string",
     "default": "https://api.dify.ai/v1",
-    "hint": "Dify: https://api.dify.ai/v1 | RAGFlow: http://你的域名 | Flowise: http://你的域名"
+    "hint": "Dify: https://api.dify.ai/v1 | RAGFlow: http://你的域名 | Flowise: https://cloud.flowiseai.com/api/v1"
   },
   "api_key": {
     "description": "API Key",
     "type": "string",
     "default": "",
-    "hint": "对应后端的 API 密钥。Flowise如果没设置可留空。"
+    "hint": "对应后端的 API 密钥。Flowise 如果没设置可留空。"
   },
   "dataset_id": {
-    "description": "Dataset / Store ID",
+    "description": "知识库 ID",
     "type": "string",
     "default": "",
     "hint": "Dify: Dataset ID | RAGFlow: Dataset ID(多个用逗号隔开) | Flowise: Document Store ID"
@@ -42,6 +42,6 @@
     "description": "最小匹配相似度",
     "type": "float",
     "default": 0.5,
-    "hint": "分数阈值，0.0 到 1.0 (Flowise 暂忽略此项)"
+    "hint": "分数阈值，0.0 到 1.0 (Flowise 请务必设置为 0)"
   }
 }
