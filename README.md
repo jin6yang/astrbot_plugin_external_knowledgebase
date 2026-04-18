@@ -31,8 +31,6 @@ Astrbot 插件 - 外部知识库检索
 
 [Flowise](https://flowiseai.com/)
 
-[AnythingLLM](https://anythingllm.com/)
-
 ## Supports
 
 - [AstrBot Repo](https://github.com/AstrBotDevs/AstrBot)
