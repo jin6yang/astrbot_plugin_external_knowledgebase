@@ -31,6 +31,8 @@ AstrBot Web UI - 插件 - 右下角"+"号 - 从链接安装
 
 ## 感谢
 
+[Dependencies](https://github.com/jin6yang/astrbot_plugin_ol_knowledgebase/network/dependencies)
+
 [AstrBotDevs/AstrBot✨](https://github.com/AstrBotDevs/AstrBot)
 
 ## Supports
