@@ -1,24 +1,88 @@
-from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
+import aiohttp
+from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
-from astrbot.api import logger
+from astrbot.api import logger, AstrBotConfig
+from astrbot.api.provider import ProviderRequest
 
-@register("helloworld", "YourName", "一个简单的 Hello World 插件", "1.0.0")
-class MyPlugin(Star):
-    def __init__(self, context: Context):
+@register("astrbot_plugin_dify_knowledgebase", "Developer", "Dify 知识库自动检索插件", "1.0.0")
+class DifyKnowledgeBasePlugin(Star):
+    def __init__(self, context: Context, config: AstrBotConfig):
         super().__init__(context)
+        self.config = config
 
-    async def initialize(self):
-        """可选择实现异步的插件初始化方法，当实例化该插件类之后会自动调用该方法。"""
+    @filter.on_llm_request()
+    async def intercept_llm_request(self, event: AstrMessageEvent, req: ProviderRequest):
+        # 1. 检查插件开关
+        if not self.config.get("enable", True):
+            return
 
-    # 注册指令的装饰器。指令名为 helloworld。注册成功后，发送 `/helloworld` 就会触发这个指令，并回复 `你好, {user_name}!`
-    @filter.command("helloworld")
-    async def helloworld(self, event: AstrMessageEvent):
-        """这是一个 hello world 指令""" # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
-        user_name = event.get_sender_name()
-        message_str = event.message_str # 用户发的纯文本消息字符串
-        message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
-        logger.info(message_chain)
-        yield event.plain_result(f"Hello, {user_name}, 你发了 {message_str}!") # 发送一条纯文本消息
+        api_endpoint = self.config.get("api_endpoint", "https://api.dify.ai/v1").rstrip('/')
+        api_key = self.config.get("api_key", "").strip()
+        dataset_id = self.config.get("dataset_id", "").strip()
+        top_k = self.config.get("top_k", 3)
+        score_threshold = self.config.get("score_threshold", 0.5)
 
-    async def terminate(self):
-        """可选择实现异步的插件销毁方法，当插件被卸载/停用时会调用。"""
+        # 2. 检查必要配置
+        if not api_key or not dataset_id:
+            logger.debug("Dify API Key 或 Dataset ID 未配置，跳过知识库检索")
+            return
+            
+        # 3. 提取用户最新的问题
+        user_msg = event.message_str.strip()
+        if not user_msg:
+            return
+
+        # 4. 调用 Dify Retrieve API
+        url = f"{api_endpoint}/datasets/{dataset_id}/retrieve"
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        # 构建请求体: 这里仅传入最基本的 query, 将检索阈值传入 retrieval_model
+        payload = {
+            "query": user_msg,
+            "retrieval_model": {
+                "top_k": top_k,
+                "score_threshold": score_threshold,
+                "score_threshold_enabled": True
+            }
+        }
+        
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(url, json=payload, headers=headers, timeout=15) as resp:
+                    if resp.status != 200:
+                        error_text = await resp.text()
+                        logger.error(f"Dify 检索请求失败: HTTP {resp.status} - {error_text}")
+                        return
+                    data = await resp.json()
+                    
+            records = data.get("records", [])
+            if not records:
+                logger.info(f"Dify 知识库: 未检索到关于 '{user_msg}' 的匹配分段。")
+                return
+                
+            # 5. 提取匹配的文本特征段 (Chunks)
+            contexts = []
+            for record in records:
+                segment = record.get("segment", {})
+                content = segment.get("content", "").strip()
+                if content:
+                    contexts.append(content)
+                    
+            if not contexts:
+                return
+                
+            # 6. 将查找到的记录组装成文本块，修改系统提示词
+            context_str = "\n\n".join([f"---片段 {i+1}---\n{c}" for i, c in enumerate(contexts)])
+            knowledge_prompt = f"\n\n请参考以下背景知识来回答用户的问题（如果背景知识与问题无关可以忽略）：\n{context_str}\n\n请结合以上背景知识回答问题。\n"
+            
+            # 将知识库内容拼接到请求 LLM 的 system_prompt
+            req.system_prompt += knowledge_prompt
+            logger.info(f"Dify 知识库插件: 成功为本次对话注入 {len(contexts)} 条知识库片段作为背景知识。")
+            
+        except aiohttp.ClientError as e:
+            logger.error(f"Dify 知识库检索网络异常: {e}")
+        except Exception as e:
+            logger.error(f"Dify 知识库检索发生未知错误: {e}")

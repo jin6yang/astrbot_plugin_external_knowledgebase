@@ -1,0 +1,37 @@
+{
+  "enable": {
+    "description": "启用知识库检索",
+    "type": "bool",
+    "default": true
+  },
+  "api_endpoint": {
+    "description": "Dify API 基地址",
+    "type": "string",
+    "default": "https://api.dify.ai/v1",
+    "hint": "填入 Dify 的 API 基地址，如 https://api.dify.ai/v1"
+  },
+  "api_key": {
+    "description": "Dataset API Key",
+    "type": "string",
+    "default": "",
+    "hint": "Dify 知识库的 API Key：进入知识库 -> API -> API 密钥"
+  },
+  "dataset_id": {
+    "description": "Dataset ID",
+    "type": "string",
+    "default": "",
+    "hint": "Dify 知识库的 ID"
+  },
+  "top_k": {
+    "description": "检索数量 (Top K)",
+    "type": "int",
+    "default": 3,
+    "hint": "设置最多返回几个片段"
+  },
+  "score_threshold": {
+    "description": "最小匹配相似度",
+    "type": "float",
+    "default": 0.5,
+    "hint": "分数阈值，0.0 到 1.0"
+  }
+}
