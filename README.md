@@ -21,13 +21,13 @@ AstrBot Web UI - 插件 - 右下角"+"号 - 从链接安装
 
 ### 如果本地部署了知识库（包括 Docker 部署）
 
-请修改 API 端点（API 基地址）为你的可访问地址
+请修改 API 端点（API 基地址）为你的可访问地址，比如 `http://127.0.0.1:3000/api/v1`
 
 ## 支持的外部知识库
 
 [Dify](https://dify.ai/)（推荐）
 
-[Flowise](https://flowiseai.com/)（未经过完善测试）
+[Flowise](https://flowiseai.com/)
 
 [RAGFlow](https://ragflow.io/)（未经过完善测试）
 
