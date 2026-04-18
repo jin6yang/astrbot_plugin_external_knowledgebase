@@ -39,10 +39,12 @@ class DifyKnowledgeBasePlugin(Star):
             "Content-Type": "application/json"
         }
         
-        # 构建请求体: 这里仅传入最基本的 query, 将检索阈值传入 retrieval_model
+        # 构建请求体: 传入必要的 query, 以及完整的 retrieval_model 配置以避免 Dify 校验报错
         payload = {
             "query": user_msg,
             "retrieval_model": {
+                "search_method": "semantic_search",
+                "reranking_enable": False,
                 "top_k": top_k,
                 "score_threshold": score_threshold,
                 "score_threshold_enabled": True
