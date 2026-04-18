@@ -27,7 +27,7 @@ Astrbot 插件 - 外部知识库检索
 
 预计支持的外部知识库
 
-[RAGFlow](https://github.com/infiniflow/ragflow)
+[RAGFlow](https://ragflow.io/)
 
 [Flowise](https://flowiseai.com/)
 
