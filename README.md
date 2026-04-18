@@ -1,4 +1,4 @@
-# External Knowledgebase Search
+# External Knowledge Base Retrieval
 
 ## Astrbot Plugin
 
@@ -25,11 +25,13 @@ AstrBot Web UI - 插件 - 右下角"+"号 - 从链接安装
 
 [Dify](https://dify.ai/)（推荐）
 
-预计支持的外部知识库
+[Flowise](https://flowiseai.com/)（未经过完善测试）
 
-[RAGFlow](https://ragflow.io/)
+[RAGFlow](https://ragflow.io/)（未经过完善测试）
 
-[Flowise](https://flowiseai.com/)
+## 感谢
+
+[AstrBotDevs/AstrBot✨](https://github.com/AstrBotDevs/AstrBot)
 
 ## Supports
 
