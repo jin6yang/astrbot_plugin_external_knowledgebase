@@ -17,9 +17,21 @@ Astrbot 插件 - 外部知识库检索
 
 按 Web UI 设置的引导使用。
 
-## 当前支持的外部知识库
+### 如果本地部署了外部知识库（包括 Docker 部署）
 
-[Dify](https://dify.ai/)
+请修改 API 端点（API 基地址）
+
+## 支持的外部知识库
+
+[Dify](https://dify.ai/)（推荐）
+
+预计支持的外部知识库
+
+[RAGFlow](https://github.com/infiniflow/ragflow)
+
+[Flowise](https://flowiseai.com/)
+
+[AnythingLLM](https://anythingllm.com/)
 
 ## Supports
 
