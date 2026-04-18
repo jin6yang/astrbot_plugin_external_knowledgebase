@@ -14,13 +14,13 @@
     "description": "Dataset API Key",
     "type": "string",
     "default": "",
-    "hint": "Dify 知识库的 API Key：进入知识库 -> API -> API 密钥"
+    "hint": "Dify 知识库的 API Key：知识库 -> 服务 API -> API 密钥"
   },
   "dataset_id": {
     "description": "Dataset ID",
     "type": "string",
     "default": "",
-    "hint": "Dify 知识库的 ID"
+    "hint": "Dify 知识库的 ID，位于知识库的的 URL 中，cloud.dify.ai/datasets 后面"
   },
   "top_k": {
     "description": "检索数量 (Top K)",
