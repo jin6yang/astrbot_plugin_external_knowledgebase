@@ -8,6 +8,8 @@ Astrbot 插件 - 外部知识库检索
 
 > [!NOTE]
 > 本插件正在开发中......
+>
+> 本插件暂未上架 AstrBot 插件市场
 
 ## 安装
 
@@ -17,9 +19,9 @@ AstrBot Web UI - 插件 - 右下角"+"号 - 从链接安装
 
 按 AstrBot Web UI 中本插件设置的引导使用
 
-### 如果本地部署了外部知识库（包括 Docker 部署）
+### 如果本地部署了知识库（包括 Docker 部署）
 
-请修改 API 端点（API 基地址）
+请修改 API 端点（API 基地址）为你的可访问地址
 
 ## 支持的外部知识库
 
@@ -31,7 +33,7 @@ AstrBot Web UI - 插件 - 右下角"+"号 - 从链接安装
 
 ## 感谢
 
-[Dependencies](https://github.com/jin6yang/astrbot_plugin_ol_knowledgebase/network/dependencies)
+[Dependencies](https://github.com/jin6yang/astrbot_plugin_external_knowledgebase/network/dependencies)
 
 [AstrBotDevs/AstrBot✨](https://github.com/AstrBotDevs/AstrBot)
 
