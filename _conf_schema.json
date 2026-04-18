@@ -8,7 +8,11 @@
     "description": "知识库类型",
     "type": "string",
     "default": "dify",
-    "hint": "填入知识库类型，可选：dify、ragflow、flowise"
+    "options": [
+      "dify",
+      "ragflow",
+      "flowise"
+    ]
   },
   "api_endpoint": {
     "description": "API 基地址",
