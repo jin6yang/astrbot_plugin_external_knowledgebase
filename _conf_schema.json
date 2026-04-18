@@ -4,23 +4,29 @@
     "type": "bool",
     "default": true
   },
+  "backend_type": {
+    "description": "知识库类型",
+    "type": "string",
+    "default": "dify",
+    "hint": "填入知识库类型，可选：dify、ragflow、flowise"
+  },
   "api_endpoint": {
-    "description": "Dify API 基地址",
+    "description": "API 基地址",
     "type": "string",
     "default": "https://api.dify.ai/v1",
-    "hint": "填入 Dify 的 API 基地址，如 https://api.dify.ai/v1"
+    "hint": "Dify: https://api.dify.ai/v1 | RAGFlow: http://你的域名 | Flowise: http://你的域名"
   },
   "api_key": {
-    "description": "Dataset API Key",
+    "description": "API Key",
     "type": "string",
     "default": "",
-    "hint": "Dify 知识库的 API Key：知识库 -> 服务 API -> API 密钥"
+    "hint": "对应后端的 API 密钥。Flowise如果没设置可留空。"
   },
   "dataset_id": {
-    "description": "Dataset ID",
+    "description": "Dataset / Store ID",
     "type": "string",
     "default": "",
-    "hint": "Dify 知识库的 ID，位于知识库的的 URL 中，cloud.dify.ai/datasets 后面"
+    "hint": "Dify: Dataset ID | RAGFlow: Dataset ID(多个用逗号隔开) | Flowise: Document Store ID"
   },
   "top_k": {
     "description": "检索数量 (Top K)",
@@ -32,6 +38,6 @@
     "description": "最小匹配相似度",
     "type": "float",
     "default": 0.5,
-    "hint": "分数阈值，0.0 到 1.0"
+    "hint": "分数阈值，0.0 到 1.0 (Flowise 暂忽略此项)"
   }
 }
