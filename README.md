@@ -1,13 +1,27 @@
-# astrbot-plugin-helloworld
+# External Knowledgebase Search
 
-AstrBot 插件模板 / A template plugin for AstrBot plugin feature
+## Astrbot Plugin
+
+Astrbot 插件 - 外部知识库检索
+
+中文 | English
 
 > [!NOTE]
-> This repo is just a template of [AstrBot](https://github.com/AstrBotDevs/AstrBot) Plugin.
-> 
-> [AstrBot](https://github.com/AstrBotDevs/AstrBot) is an agentic assistant for both personal and group conversations. It can be deployed across dozens of mainstream instant messaging platforms, including QQ, Telegram, Feishu, DingTalk, Slack, LINE, Discord, Matrix, etc. In addition, it provides a reliable and extensible conversational AI infrastructure for individuals, developers, and teams. Whether you need a personal AI companion, an intelligent customer support agent, an automation assistant, or an enterprise knowledge base, AstrBot enables you to quickly build AI applications directly within your existing messaging workflows.
+> 本插件正在开发中......
 
-# Supports
+## 安装
+
+从项目链接手动安装。
+
+## 使用
+
+按 Web UI 设置的引导使用。
+
+## 当前支持的外部知识库
+
+[Dify](https://dify.ai/)
+
+## Supports
 
 - [AstrBot Repo](https://github.com/AstrBotDevs/AstrBot)
 - [AstrBot Plugin Development Docs (Chinese)](https://docs.astrbot.app/dev/star/plugin-new.html)
