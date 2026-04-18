@@ -24,7 +24,7 @@
     "description": "API Key",
     "type": "string",
     "default": "",
-    "hint": "对应后端的 API 密钥。Flowise 如果没设置可留空。"
+    "hint": "对应后端的 API 密钥"
   },
   "dataset_id": {
     "description": "知识库 ID",
@@ -42,6 +42,6 @@
     "description": "最小匹配相似度",
     "type": "float",
     "default": 0.5,
-    "hint": "分数阈值，0.0 到 1.0 (Flowise 请务必设置为 0)"
+    "hint": "分数阈值, 0.0 到 1.0 (如果使用 Flowise, 此项请设为 0)"
   }
 }
