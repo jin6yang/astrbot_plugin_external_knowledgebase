@@ -5,41 +5,52 @@
     "default": true
   },
   "decision_mode": {
-    "description": "触发决策模式 (L1=总是发送, L2=关键词判断, L3=大模型意图识别)",
+    "description": "触发决策模式",
     "type": "string",
-    "options": ["L1", "L2", "L3"],
-    "default": "L1"
+    "options": [
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "default": "L1",
+    "hint": "选择何时触发外部知识库查询 (L1=总是发送, L2=关键词判断, L3=大模型意图识别)"
   },
   "keywords": {
     "description": "L2模式: 触发关键词 (逗号分隔)",
     "type": "string",
-    "default": "请问,解释,文档,是什么,介绍,怎么,如何,帮我,可以,帮"
+    "default": "请问,解释,文档,是什么,介绍,怎么,如何,帮我,可以,帮",
+    "hint": "若选择L2模式，用户消息包含这些词时才会触发知识库查询"
   },
   "custom_llm_provider": {
     "description": "L3决策/重写 LLM (留空则默认为用户正在使用的模型)",
     "type": "string",
     "default": "",
-    "_special": "select_provider"
+    "_special": "select_provider",
+    "hint": "建议选择响应较快的模型专门负责意图识别和重写（如 gpt-4o-mini）"
   },
   "l3_prompt": {
     "description": "L3模式: 意图识别提示词",
     "type": "text",
-    "default": "你是一个意图识别引擎。\n用户语境:\n{history}\n用户当前输入: {user_msg}\n判断用户上述输入是否是在提问查资料并需要通过外部知识库或文档检索进一步的背景知识。如果需要检索额外资料，回答YES，否则如果只是日常聊天或不需要检索资料，回答NO。只输出YES或NO。"
+    "default": "你是一个意图识别引擎。\n用户语境:\n{history}\n用户当前输入: {user_msg}\n判断用户上述输入是否是在提问查资料并需要通过外部知识库或文档检索进一步的背景知识。如果需要检索额外资料，回答YES，否则如果只是日常聊天或不需要检索资料，回答NO。只输出YES或NO。",
+    "hint": "可用变量: {history} 历史对话，{user_msg} 用户当前输入"
   },
   "enable_query_rewrite": {
     "description": "启用: 查询重写(解决多轮对话指代问题)",
     "type": "bool",
-    "default": true
+    "default": true,
+    "hint": "开启后将调用大模型结合上下文把诸如“这个”替换为具体名称，提高搜索精度"
   },
   "rewrite_prompt": {
     "description": "查询重写系统提示词",
     "type": "text",
-    "default": "根据以下对话历史，将用户的最新输入重写为独立的搜索查询词。核心任务是：解决指代不明，将代词(他,那个等)替换为具体提及的实体；如果不需要重写，直接输出用户输入内容。只输出重写后的内容，不要作答或解释。\n\n对话历史:\n{history}\n\n用户最新的需重写输入: {user_msg}"
+    "default": "根据以下对话历史，将用户的最新输入重写为独立的搜索查询词。核心任务是：解决指代不明，将代词(他,那个等)替换为具体提及的实体；如果不需要重写，直接输出用户输入内容。只输出重写后的内容，不要作答或解释。\n\n对话历史:\n{history}\n\n用户最新的需重写输入: {user_msg}",
+    "hint": "可用变量: {history} 历史对话，{user_msg} 用户需要被重写的输入"
   },
   "knowledge_prompt_template": {
     "description": "知识检索结果注入系统提示词",
     "type": "text",
-    "default": "\n\n请参考以下背景知识来回答用户的问题（如果背景知识与问题无关可以忽略）：\n{context_str}\n\n请结合以上背景知识回答问题。\n"
+    "default": "\n\n请参考以下背景知识来回答用户的问题（如果背景知识与问题无关可以忽略）：\n{context_str}\n\n请结合以上背景知识回答问题。\n",
+    "hint": "可用变量: {context_str} 知识库实际返回的文本内容"
   },
   "backend_type": {
     "description": "知识库类型",
