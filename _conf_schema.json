@@ -9,7 +9,7 @@
     "type": "object",
     "items": {
       "decision_mode": {
-        "description": "触发决策模式",
+        "description": "决策模式",
         "type": "string",
         "options": [
           "L1",
@@ -17,7 +17,7 @@
           "L3"
         ],
         "default": "L1",
-        "hint": "选择何时触发外部知识库查询 (L1=总是发送, L2=关键词判断, L3=大模型意图识别)"
+        "hint": "选择何时触发外部知识库查询（L1=总是发送, L2=关键词判断, L3=大模型意图识别）"
       },
       "keywords": {
         "description": "L2 模式: 触发关键词 (逗号分隔)",
@@ -76,7 +76,7 @@
         "description": "API Base URL",
         "type": "string",
         "default": "https://api.dify.ai/v1",
-        "hint": "Dify: https://api.dify.ai/v1 | RAGFlow: http://你的域名 | Flowise: https://cloud.flowiseai.com/api/v1"
+        "hint": "Dify: https://api.dify.ai/v1 \nRAGFlow: 实际部署的服务访问地址 \nFlowise: https://cloud.flowiseai.com/api/v1"
       },
       "api_key": {
         "description": "API Key",
