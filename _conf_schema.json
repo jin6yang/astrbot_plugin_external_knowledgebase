@@ -56,51 +56,51 @@
         "default": "\n\n请参考以下背景知识来回答用户的问题（如果背景知识与问题无关可以忽略）：\n{context_str}\n\n请结合以上背景知识回答问题。\n",
         "hint": "可用变量: {context_str} 知识库实际返回的文本内容"
       }
-    },
-    "config_knowledgebase": {
-      "description": "知识库配置",
-      "type": "object",
-      "items": {
-        "backend_type": {
-          "description": "知识库类型",
-          "type": "string",
-          "default": "dify",
-          "options": [
-            "dify",
-            "ragflow",
-            "flowise"
-          ]
-        },
-        "api_endpoint": {
-          "description": "API Base URL",
-          "type": "string",
-          "default": "https://api.dify.ai/v1",
-          "hint": "Dify: https://api.dify.ai/v1 | RAGFlow: http://你的域名 | Flowise: https://cloud.flowiseai.com/api/v1"
-        },
-        "api_key": {
-          "description": "API Key",
-          "type": "string",
-          "default": "",
-          "hint": "对应后端的 API 密钥"
-        },
-        "dataset_id": {
-          "description": "知识库 ID",
-          "type": "string",
-          "default": "",
-          "hint": "Dify: Dataset ID | RAGFlow: Dataset ID(多个用逗号隔开) | Flowise: Document Store ID"
-        },
-        "top_k": {
-          "description": "检索数量 (Top K)",
-          "type": "int",
-          "default": 3,
-          "hint": "设置最多返回几个片段。一般情况推荐值区间为 3-10"
-        },
-        "score_threshold": {
-          "description": "最小匹配相似度",
-          "type": "float",
-          "default": 0.5,
-          "hint": "分数阈值, 0.0 到 1.0 (如果使用 Flowise, 此项请设为 0)"
-        }
+    }
+  },
+  "config_knowledgebase": {
+    "description": "知识库配置",
+    "type": "object",
+    "items": {
+      "backend_type": {
+        "description": "知识库类型",
+        "type": "string",
+        "default": "dify",
+        "options": [
+          "dify",
+          "ragflow",
+          "flowise"
+        ]
+      },
+      "api_endpoint": {
+        "description": "API Base URL",
+        "type": "string",
+        "default": "https://api.dify.ai/v1",
+        "hint": "Dify: https://api.dify.ai/v1 | RAGFlow: http://你的域名 | Flowise: https://cloud.flowiseai.com/api/v1"
+      },
+      "api_key": {
+        "description": "API Key",
+        "type": "string",
+        "default": "",
+        "hint": "对应后端的 API 密钥"
+      },
+      "dataset_id": {
+        "description": "知识库 ID",
+        "type": "string",
+        "default": "",
+        "hint": "Dify: Dataset ID | RAGFlow: Dataset ID(多个用逗号隔开) | Flowise: Document Store ID"
+      },
+      "top_k": {
+        "description": "检索数量 (Top K)",
+        "type": "int",
+        "default": 3,
+        "hint": "设置最多返回几个片段。一般情况推荐值区间为 3-10"
+      },
+      "score_threshold": {
+        "description": "最小匹配相似度",
+        "type": "float",
+        "default": 0.5,
+        "hint": "分数阈值, 0.0 到 1.0 (如果使用 Flowise, 此项请设为 0)"
       }
     }
   }
