@@ -76,7 +76,7 @@
         "description": "API Base URL",
         "type": "string",
         "default": "https://api.dify.ai/v1",
-        "hint": "Dify: https://api.dify.ai/v1 \nRAGFlow: 实际部署的服务访问地址 \nFlowise: https://cloud.flowiseai.com/api/v1"
+        "hint": "Dify: https://api.dify.ai/v1 | RAGFlow: 实际部署的服务访问地址 | Flowise: https://cloud.flowiseai.com/api/v1"
       },
       "api_key": {
         "description": "API Key",
