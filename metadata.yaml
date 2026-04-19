@@ -1,6 +1,6 @@
 name: astrbot_plugin_external_knowledgebase
 display_name: 外部知识库检索
-desc: 在请求大模型之前检索外部知识库（当前支持 Dify, Flowise, RAGFlow），并将匹配的片段作为背景知识注入到上下文中。
+desc: 在请求大模型之前检索外部知识库（当前支持 Dify, Flowise, RAGFlow），并将匹配的片段作为背景知识注入到上下文中。有 3 档智能等级可供选择。
 version: v0.1.0
 author: POINTER
 repo: https://github.com/jin6yang/astrbot_plugin_external_knowledgebase
