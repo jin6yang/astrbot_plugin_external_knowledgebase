@@ -6,7 +6,7 @@
   },
   "description1": {
     "description": "测试标题",
-    "type": "string"
+    "type": "int"
   },
   "decision_mode": {
     "description": "触发决策模式",
