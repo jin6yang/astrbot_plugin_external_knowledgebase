@@ -4,6 +4,10 @@
     "type": "bool",
     "default": true
   },
+  "description1": {
+    "description": "测试标题",
+    "type": "string"
+  },
   "decision_mode": {
     "description": "触发决策模式",
     "type": "string",
