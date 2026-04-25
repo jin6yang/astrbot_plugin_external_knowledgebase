@@ -121,6 +121,10 @@ Flowise: https://cloud.flowiseai.com/api/v1
 
 请修改 API 端点（API 基地址）为你的可访问地址，比如 `http://127.0.0.1:3000/api/v1`
 
+### 插件安装位置
+
+Windows: `%USERPROFILE%\.astrbot\data\plugins\astrbot_plugin_external_knowledgebase`
+
 ## 感谢
 
 [Dependencies](https://github.com/jin6yang/astrbot_plugin_external_knowledgebase/network/dependencies)
